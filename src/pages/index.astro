@@ -4,11 +4,13 @@ import '../styles/global.css';
 
 // data source
 // replace temporary JSON placeholder API
-const source = 'https://jsonplaceholder.typicode.com/users';
+const source = 'https://api.disneyapi.dev/character';
 // fetch the data
 const res = await fetch(source); 
 // store retreived data
 const data = await res.json();
+
+const websiteName = 'Disney Characters'
 ---
 
 <html lang="en">
@@ -26,7 +28,7 @@ const data = await res.json();
 	<body>
 		
 		<header class="masthead">
-			<h1 class="site-title">Gallery</h1>
+			<h1 class="site-title">Disney Characters</h1>
 		</header>
 
 		<main id="content" class="main-area">
@@ -35,14 +37,13 @@ const data = await res.json();
 		  
 				<!-- Your API Data -->
 				{
-					data.map( item =>
-					<li class="card-item">
+					data.data.map( character =>
+					<li class="character">
 						<a href="#">
-							<figure class="card">
-							<img src="https://assets.codepen.io/16425/image-placeholder.png" alt="Placeholder">
+							<figure class="character">
+							<img src={character.imageUrl} alt="Placeholder">
 							<figcaption class="caption">
-								<h3 class="caption-title">{item.name}</h3>
-								<p>{item.company.catchPhrase}</p>
+								<h3 class="caption-title">{character.films}</h3>
 							</figcaption>
 							</figure>
 						</a>
